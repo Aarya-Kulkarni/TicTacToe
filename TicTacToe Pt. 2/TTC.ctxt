@@ -1,0 +1,28 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ play()
+comment0.text=\r\n\ \ \ \ public\ TTC(int\ size)\ {\r\n\ \ \ \ board\ \=\ new\ String\ [size][size];\r\n\ \ \ \ dimension\ \=\ size;\r\n\ \ \ \ }\r\n
+comment1.params=
+comment1.target=void\ reset()
+comment10.params=
+comment10.target=boolean\ checkDiagonalX()
+comment11.params=
+comment11.target=boolean\ checkDiagonalO()
+comment2.params=
+comment2.target=void\ screenOutput()
+comment3.params=marker\ row\ col
+comment3.target=void\ move(java.lang.String,\ int,\ int)
+comment4.params=row\ col
+comment4.target=boolean\ checkSpot(int,\ int)
+comment5.params=
+comment5.target=boolean\ check()
+comment6.params=
+comment6.target=boolean\ checkHorizontalX()
+comment6.text=\r\n\ \ \ \ public\ boolean\ checkHorizontalX()\ {\r\n\ \ \ \ //first\ row\ horizontal\r\n\ \ \ \ if\ (board[0][0]\ \=\=\ "X"\ &&\ board[0][1]\ \=\=\ "X"\ &&\ board[0][2]\ \=\=\ "X")\ \r\n\ \ \ \ return\ true;\r\n\r\n\ \ \ \ //second\ row\ horizontal\r\n\ \ \ \ if\ (board[1][0]\ \=\=\ "X"\ &&\ board[1][1]\ \=\=\ "X"\ &&\ board[1][2]\ \=\=\ "X")\r\n\ \ \ \ return\ true;\r\n\r\n\ \ \ \ //third\ row\ horizontal\r\n\ \ \ \ if\ (board[2][0]\ \=\=\ "X"\ &&\ board[2][1]\ \=\=\ "X"\ &&\ board[2][2]\ \=\=\ "X")\r\n\ \ \ \ return\ true;\r\n\r\n\ \ \ \ return\ false;\r\n\ \ \ \ }\r\n
+comment7.params=
+comment7.target=boolean\ checkHorizontalO()
+comment8.params=
+comment8.target=boolean\ checkVerticalX()
+comment9.params=
+comment9.target=boolean\ checkVerticalO()
+numComments=12
