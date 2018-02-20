@@ -242,20 +242,31 @@ public class TTC
     }
      */
 
-    public boolean checkHorizontalX() {
-        int rowNum = 0;
+    public boolean checkHorizontalX() {     
+        int rowNum = 0; 
         boolean win = false;
-        while (rowNum < board.length) {
-            for (int i = 0; i < board.length; i++) {
-                if (board[rowNum][i] == "O") {
-                    win = false;
-                    //return true;
-                }
-            }
-            rowNum++;        
+        int count = 0;       
+        int moveCount = 0;
+
+        for (int i = 0; i < board.length - 1; i++) {
+            if(board[rowNum][i] == board[rowNum][i + 1] && board[rowNum][i]!= "-")
+                count++;
         }
+        if (count == board.length - 1) {
+            win = true;
+            count = 0;
+        }    
+        moveCount++;
+        rowNum++;
+        /*for (int j = 0; j < board.length - 1; j++) {
+        if (rowArr.get(j) == "X" && rowArr.get(j + 1) == "X")
+        win = true;
+        rowNum++;
+        }
+         */       
         return win;
     }
+
     public boolean checkHorizontalO() {
         //first row horizontal
 
