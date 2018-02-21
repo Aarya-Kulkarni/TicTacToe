@@ -1,28 +1,29 @@
 #BlueJ class context
-comment0.params=
-comment0.target=void\ play()
-comment0.text=\r\n\ \ \ \ public\ TTC(int\ size)\ {\r\n\ \ \ \ board\ \=\ new\ String\ [size][size];\r\n\ \ \ \ dimension\ \=\ size;\r\n\ \ \ \ }\r\n
+comment0.target=TTC
+comment0.text=\n\ Write\ a\ description\ of\ class\ TTC\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
-comment1.target=void\ reset()
+comment1.target=void\ play()
+comment1.text=\n\ \ \ \ public\ TTC(int\ size)\ {\n\ \ \ \ board\ \=\ new\ String\ [size][size];\n\ \ \ \ dimension\ \=\ size;\n\ \ \ \ }\n
 comment10.params=
-comment10.target=boolean\ checkDiagonalX()
+comment10.target=boolean\ checkVerticalO()
 comment11.params=
-comment11.target=boolean\ checkDiagonalO()
+comment11.target=boolean\ checkDiagonalTopLeftBotRight()
+comment12.params=
+comment12.target=boolean\ checkDiagonalTopRightBotLeft()
 comment2.params=
-comment2.target=void\ screenOutput()
-comment3.params=marker\ row\ col
-comment3.target=void\ move(java.lang.String,\ int,\ int)
-comment4.params=row\ col
-comment4.target=boolean\ checkSpot(int,\ int)
-comment5.params=
-comment5.target=boolean\ check()
+comment2.target=void\ reset()
+comment3.params=
+comment3.target=void\ screenOutput()
+comment4.params=marker\ row\ col
+comment4.target=void\ move(java.lang.String,\ int,\ int)
+comment5.params=row\ col
+comment5.target=boolean\ checkSpot(int,\ int)
 comment6.params=
-comment6.target=boolean\ checkHorizontalX()
-comment6.text=\r\n\ \ \ \ public\ boolean\ checkHorizontalX()\ {\r\n\ \ \ \ //first\ row\ horizontal\r\n\ \ \ \ if\ (board[0][0]\ \=\=\ "X"\ &&\ board[0][1]\ \=\=\ "X"\ &&\ board[0][2]\ \=\=\ "X")\ \r\n\ \ \ \ return\ true;\r\n\r\n\ \ \ \ //second\ row\ horizontal\r\n\ \ \ \ if\ (board[1][0]\ \=\=\ "X"\ &&\ board[1][1]\ \=\=\ "X"\ &&\ board[1][2]\ \=\=\ "X")\r\n\ \ \ \ return\ true;\r\n\r\n\ \ \ \ //third\ row\ horizontal\r\n\ \ \ \ if\ (board[2][0]\ \=\=\ "X"\ &&\ board[2][1]\ \=\=\ "X"\ &&\ board[2][2]\ \=\=\ "X")\r\n\ \ \ \ return\ true;\r\n\r\n\ \ \ \ return\ false;\r\n\ \ \ \ }\r\n
+comment6.target=boolean\ check()
 comment7.params=
-comment7.target=boolean\ checkHorizontalO()
+comment7.target=boolean\ checkHorizontalX()
 comment8.params=
-comment8.target=boolean\ checkVerticalX()
+comment8.target=boolean\ checkHorizontalO()
 comment9.params=
-comment9.target=boolean\ checkVerticalO()
-numComments=12
+comment9.target=boolean\ checkVerticalX()
+numComments=13

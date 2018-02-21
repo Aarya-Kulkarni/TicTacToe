@@ -62,8 +62,9 @@ public class TTC
                         System.out.println();
                         if (checkSpot(x, y)) {
                             move(markX, x, y);
-                            if (checkHorizontalX() /*|| checkVerticalX() || checkDiagonalX()*/) {
+                            if (checkHorizontalX() || checkVerticalX() || checkDiagonalTopRightBotLeft() || checkDiagonalTopLeftBotRight()) {
                                 System.out.println();
+                                screenOutput();
                                 System.out.println("Player 1 is the winner!");
                                 break;
                             }
@@ -92,8 +93,9 @@ public class TTC
                         System.out.println();
                         if (checkSpot(x, y)) {
                             move(markO, x, y);
-                            if (checkHorizontalO() || checkVerticalO() || checkDiagonalO()) {
+                            if (checkHorizontalO() || checkVerticalO() || checkDiagonalTopRightBotLeft() ||  checkDiagonalTopLeftBotRight()) {
                                 System.out.println();
+                                screenOutput();
                                 System.out.println("Player 2 is the winner!");
                                 break;
                             }
@@ -110,6 +112,16 @@ public class TTC
                         //a = 0;
                     }
                 } while (check());
+                System.out.println();
+                System.out.println("Do you want to play again?");
+                System.out.println("(1) Yes");
+                System.out.println("(2) No");
+                System.out.println("-->");
+                int u = console.nextInt();
+                if (u == 1)
+                    play();
+                else
+                    break;        
             }
             if ('2' == choice.charAt(0)) {
                 System.out.println();
@@ -133,7 +145,7 @@ public class TTC
                         System.out.println();
                         if (checkSpot(x, y)) {
                             move(markX, x, y);
-                            if (checkHorizontalX() || checkVerticalX() || checkDiagonalX()) {
+                            if (checkHorizontalX() || checkVerticalX() || checkDiagonalTopRightBotLeft() || checkDiagonalTopLeftBotRight()) {
                                 System.out.println();
                                 screenOutput();
                                 System.out.println("You are the winner!");
@@ -164,7 +176,7 @@ public class TTC
                         System.out.println();
                         if (checkSpot(x, y)) {
                             move(markO, x, y);
-                            if (checkHorizontalO() || checkVerticalO() || checkDiagonalO()) {
+                            if (checkHorizontalO() || checkVerticalO() || checkDiagonalTopRightBotLeft() || checkDiagonalTopLeftBotRight()) {
                                 System.out.println();
                                 screenOutput();
                                 System.out.println("You got beaten by a computer!");
@@ -183,8 +195,17 @@ public class TTC
                         //a = 0;
                     }
                 } while (check());
+                System.out.println();
+                System.out.println("Do you want to play again?");
+                System.out.println("(1) Yes");
+                System.out.println("(2) No");
+                System.out.println("-->");
+                int u = console.nextInt();
+                if (u == 1)
+                    play();
+                else
+                    break;                                                    
             }
-
         } while (choice.charAt(0) == '1' && choice.charAt(0) == '2'); 
     }    
 
@@ -224,131 +245,118 @@ public class TTC
         return checker;
     }
 
-    /*
-    public boolean checkHorizontalX() {
-    //first row horizontal
-    if (board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X") 
-    return true;
-
-    //second row horizontal
-    if (board[1][0] == "X" && board[1][1] == "X" && board[1][2] == "X")
-    return true;
-
-    //third row horizontal
-    if (board[2][0] == "X" && board[2][1] == "X" && board[2][2] == "X")
-    return true;
-
-    return false;
-    }
-     */
-
     public boolean checkHorizontalX() {     
         int rowNum = 0; 
         boolean win = false;
         int count = 0;       
-        int moveCount = 0;
-
-        for (int i = 0; i < board.length - 1; i++) {
-            if(board[rowNum][i] == board[rowNum][i + 1] && board[rowNum][i]!= "-")
-                count++;
+        while (rowNum < board.length) {
+            for (int i = 0; i < board.length - 1; i++) {
+                if(board[rowNum][i] == board[rowNum][i + 1] && board[rowNum][i]!= "-")
+                    count++;
+            }
+            if (count == board.length - 1) {
+                win = true;
+                count = 0;
+            }  
+            else {        
+                count = 0;
+            }
+            rowNum++;
         }
-        if (count == board.length - 1) {
-            win = true;
-            count = 0;
-        }    
-        moveCount++;
-        rowNum++;
-        /*for (int j = 0; j < board.length - 1; j++) {
-        if (rowArr.get(j) == "X" && rowArr.get(j + 1) == "X")
-        win = true;
-        rowNum++;
-        }
-         */       
         return win;
     }
 
     public boolean checkHorizontalO() {
-        //first row horizontal
-
-        if (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O")
-            return true;
-        //second row horizontal
-
-        if (board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O")
-            return true;    
-        //third row horizontal
-
-        if (board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O")
-            return true;   
-        return false;
+        int rowNum = 0; 
+        boolean win = false;
+        int count = 0;       
+        while (rowNum < board.length) {
+            for (int i = 0; i < board.length - 1; i++) {
+                if(board[rowNum][i] == board[rowNum][i + 1] && board[rowNum][i]!= "-")
+                    count++;
+            }
+            if (count == board.length - 1) {
+                win = true;
+                count = 0;
+            }  
+            else {        
+                count = 0;
+            }
+            rowNum++;
+        }
+        return win;
     }
 
     public boolean checkVerticalX() {
-        //first column vertical 
-        if (board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X") 
-            return true;
-
-        //second column vertical
-        if (board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X")
-            return true;
-
-        //third column vertical
-        if (board[0][2] == "X" && board[1][2] == "X" && board[2][2] == "X")
-            return true;
-
-        return false;
+        int colNum = 0; 
+        boolean win = false;
+        int count = 0;       
+        while (colNum < board.length) {
+            for (int i = 0; i < board.length - 1; i++) {
+                if(board[i][colNum] == board[i + 1][colNum] && board[i][colNum]!= "-")
+                    count++;
+            }
+            if (count == board.length - 1) {
+                win = true;
+                count = 0;
+            }  
+            else {        
+                count = 0;
+            }
+            colNum++;
+        }
+        return win;
     }
 
     public boolean checkVerticalO() {
-        //first column vertical 
+        int colNum = 0; 
+        boolean win = false;
+        int count = 0;       
+        while (colNum < board.length) {
+            for (int i = 0; i < board.length - 1; i++) {
+                if(board[i][colNum] == board[i + 1][colNum] && board[i][colNum]!= "-")
+                    count++;
+            }
+            if (count == board.length - 1) {
+                win = true;
+                count = 0;
+            }  
+            else {        
+                count = 0;
+            }
+            colNum++;
+        }
+        return win;
+    }
 
-        if (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O")
-            return true;
-        //second column vertical
-
-        if (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O")
-            return true;    
-        //third column vertical
-
-        if (board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O")
-            return true;   
+    public boolean checkDiagonalTopLeftBotRight() {
+        //int diagNum = 0; 
+        //oolean win = false;
+        int count = 0;       
+        for (int row = 0; row < board.length - 1; row++) {
+            for (int col = 0; col < board[0].length - 1; col++) {
+                if(board[row][col] == board[row + 1][col + 1] && board[row][col]!= "-")
+                    count++;
+            }
+        }
+        if (count == board.length - 1) {
+            return true;                
+        }  
+        
         return false;
     }
-
-    public boolean checkDiagonalX() {
-        //top to bottom (left to right)
-        if (board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") 
+    
+    public boolean checkDiagonalTopRightBotLeft() {
+        int count = 0;
+        for (int row = 0 ; row < board.length - 1; row++) {
+            for (int col = board[0].length - 1; col > 0; col--) {
+                if(board[row][col] ==  board[row + 1][col - 1] && board[row][col]!= "-")
+                    count++;
+            }
+        }
+        if (count == board.length - 1) {
             return true;
-
-        //bottom to top (right to left)
-        if (board[2][0] == "X" && board[1][1] == "X" && board[0][2] == "X") 
-            return true;
-
+        }        
         return false;
     }
-
-    public boolean checkDiagonalO() {
-        //top to bottom (left to right)
-
-        if (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O")
-            return true;
-        //bottom to top (right to left)
-
-        if (board[2][0] == "O" && board[1][1] == "O" && board[0][2] == "O")
-            return true;
-        return false;
-    }
-
-    /*
-    public int AImove() {
-    //check horizontal
-
-    for (int row = 0; i < board.length; row++) {
-    for (int col = 0; board[0].length; col++) {
-    if (board[
-    }
-    }
-
-    }
-     */
 }
